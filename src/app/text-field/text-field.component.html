@@ -1,0 +1,15 @@
+<div>
+    <!-- Label -->
+    <label [for]="inputId" class="amplify-label">
+        <ng-content select="[amplify-label]"> </ng-content>
+    </label>
+
+    <!-- Description Text -->
+    <ng-content select="[amplify-description-text]"></ng-content>
+
+    <!-- Actual Input -->
+    <ng-content select="[amplify-input]"></ng-content>
+
+    <!-- Error -->
+    <ng-content select="[amplify-error]"></ng-content>
+</div>
