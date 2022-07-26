@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ContentChild } from '@angular/core';
+import { AfterContentInit, Component, ContentChild, Input } from '@angular/core';
 import { AmplifyInputDirective } from '../amplify-input.directive';
 
 @Component({
@@ -6,6 +6,8 @@ import { AmplifyInputDirective } from '../amplify-input.directive';
   templateUrl: './text-field.component.html',
 })
 export class TextFieldComponent implements AfterContentInit {
+  @Input() describedBy: string;
+
   @ContentChild(AmplifyInputDirective)
   childInput: AmplifyInputDirective;
 
@@ -17,6 +19,8 @@ export class TextFieldComponent implements AfterContentInit {
     // getting data from child input
     this.inputId = this.childInput?.id;
     // send data to child input
-    this.childInput.ariaDescribedBy = '123';
+    // note: this is still not dynamic, so we still need a change detction strategy here.
+    // this can be implemented later for the purpose of POC.
+    this.childInput.ariaDescribedBy = this.describedBy;
   }
 }
